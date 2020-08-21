@@ -20,12 +20,12 @@ app.use(express.json());
 
 app.use('/', require('./controllers/Base'));
 
-// if(process.env.NODE_ENV==="production"){
-//   app.get("*",(req,res)=>{
-//     res.sendFile(path.join(__dirname,"client","build","index.html"))
-//   })
-// }
 app.use(express.static('public'));
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
