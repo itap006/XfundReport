@@ -111,5 +111,16 @@
         <% }); %>
       </div>
     </div>
+    <script>
+      const inputs = document.querySelectorAll('input');
+      const onChange = (e) => {
+        document.documentElement.style.setProperty(
+          e.target.name,
+          e.target.value + 'cm'
+        );
+      };
+
+      inputs.forEach((e) => e.addEventListener('input', onChange));
+    </script>
   </body>
 </html>
