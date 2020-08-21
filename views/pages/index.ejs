@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="shortcuts.css" />
   </head>
+
   <body>
     <div class="print">
       <div class="print-ignore">
@@ -86,16 +87,16 @@
               </tr>
               <% e.forEach((f)=> { %>
               <tr
-                style="<%=f.itemType === 'H' || f.itemType === 'C'? 'font-weight:bold': ''%>"
+                style="<%=f.itemType === 'H' || f.itemType === 'C' ? 'font-weight:bold':'' %>"
               >
                 <td><%=f.description%></td>
                 <td
-                  style="text-align:<%=f.memorandumValue === 0 ? 'left' : 'right'%>"
+                  style="text-align: <%= f.memorandumValue === 0 ? ' left ' : 'right'%>"
                 >
                   <%=formatCurrency(f.memorandumValue?.toFixed(2))%>
                 </td>
                 <td
-                  style="color: <%=f.currentValue < 0 ? 'red' : 'initial'%>;text-align: right"
+                  style="color: <%=f.currentValue < 0 ? 'red' : 'initial'%>;text-align : right;"
                 >
                   <%=f.currentValue < 0 ? `(${formatCurrency(
                   f.currentValue?.toFixed(2).split('-')[1] )})` :
