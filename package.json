@@ -1,0 +1,26 @@
+{
+  "name": "xfundreport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-sass": "node-sass assets/shortcuts.scss assets/shortcuts.css --watch",
+    "compile-sass": "node-sass assets/shortcuts.scss assets/shortcuts.css",
+    "start": "npm run compile-sass && node server.js",
+    "dev-start": "nodemon server.js -e js,css,ejs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "node-sass": "^4.14.1",
+    "node-sass-middleware": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <title>Xfund Report</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="shortcuts.css" />
+  </head>
+  <body>
+    <div class="print">
+      <div class="print-ignore">
+        <button>Print</button>
+        <div>
+          <label htmlfor="">PT</label>
+          <input name="--pt" type="text" placeholder="2" />
+          <label htmlfor="">PR</label>
+          <input name="--pr" type="text" placeholder="2" />
+          <label htmlfor="">PB</label>
+          <input name="--pb" type="text" placeholder="2" />
+          <label htmlfor="">PL</label>
+          <input name="--pl" type="text" placeholder="2" />
+          <span>in cm units</span>
+        </div>
+      </div>
+      <div class="ref">
+        <% data.forEach((e)=> { %>
+        <div class="page">
+          <div class="page-header">
+            <div style="font-size: 1rem;"><%=e[0].portfolio%></div>
+            <div>
+              <span
+                style="
+                  min-width: 186px;
+                  display: inline-block;
+                  text-align: right;
+                "
+              >
+                PORTFOLIO VALUATION AS AT :
+              </span>
+              <%=formatDate(e[0].reportDate)%>
+            </div>
+            <div>
+              <span
+                style="
+                  min-width: 186px;
+                  display: inline-block;
+                  text-align: right;
+                "
+              >
+                OPENING NET ASSET VALUE :
+              </span>
+              <%=formatCurrency(e[0].openingNetAsset)%>
+            </div>
+            <div>
+              <span
+                style="
+                  min-width: 186px;
+                  display: inline-block;
+                  text-align: right;
+                "
+              >
+                OPENING BID PRICE :
+              </span>
+              <%=e[0].openingPrice?.toFixed(2)%>
+            </div>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><%=e[0].portfolioCurrency%></td>
+              </tr>
+              <tr style="font-weight: bold;">
+                <td>Instruments</td>
+                <td></td>
+                <td colspan="2" style="text-align: right;">
+                  Value @ <%=formatDate(e[0].reportDate)%>
+                </td>
+              </tr>
+              <% e.forEach((f)=> { %>
+              <tr
+                style="<%=f.itemType === 'H' || f.itemType === 'C'? 'font-weight:bold': ''%>"
+              >
+                <td><%=f.description%></td>
+                <td
+                  style="text-align:<%=f.memorandumValue === 0 ? 'left' : 'right'%>"
+                >
+                  <%=formatCurrency(f.memorandumValue?.toFixed(2))%>
+                </td>
+                <td
+                  style="color: <%=f.currentValue < 0 ? 'red' : 'initial'%>;text-align: right"
+                >
+                  <%=f.currentValue < 0 ? `(${formatCurrency(
+                  f.currentValue?.toFixed(2).split('-')[1] )})` :
+                  formatCurrency(f.currentValue?.toFixed(2))%>
+                </td>
+                <td><%=f.allocation%></td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>

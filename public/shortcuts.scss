@@ -1,0 +1,51 @@
+@import 'A4.scss';
+
+.print {
+  min-height: 100vh;
+  .page {
+    font-size: 0.8rem;
+  }
+}
+
+table {
+  width: 100%;
+  font-size: 0.8rem;
+  border-collapse: collapse;
+  tr {
+    border-bottom: 1px solid black;
+    padding: 5px;
+  }
+  td:empty::after {
+    content: '\00a0';
+  }
+  td:nth-child(2) {
+    width: 18%;
+  }
+  td:nth-child(3) {
+    width: 18%;
+  }
+  td:nth-child(4) {
+    width: 9%;
+    text-align: right;
+  }
+}
+
+.page-header {
+  font-weight: bold;
+}
+
+.print-ignore {
+  input {
+    width: 30px;
+    margin-right: 5px;
+  }
+  label {
+    margin-right: 5px;
+  }
+}
+
+@media print {
+  .print-ignore {
+    display: none;
+  }
+}
