@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 app.set('view engine', 'ejs');
 
-// app.use(express.json());
+app.use(express.json());
 // if (process.env.NODE_ENV === 'development') {
 //   app.use(
 //     sassMiddleware({
@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 //   );
 // }
 
-app.use('/', require('./controllers/Main'));
+app.use('/', require('./controllers/Base'));
 
 // if(process.env.NODE_ENV==="production"){
 //   app.get("*",(req,res)=>{

@@ -40,4 +40,37 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const response = await axios.post(
+      'https://xfundcoreapi.azurewebsites.net/api/v1/getvaluationsummary',
+      req.body
+    );
+    let state = response.data;
+
+    if (!state) return res.statusCode(200).send('<div>no data</div>');
+
+    let data = () => {
+      const portfolio = [];
+      const indexes = [];
+
+      state.forEach((e, i) => {
+        if (!portfolio.includes(e.portfolio)) {
+          portfolio.push(e.portfolio);
+          indexes.push(i);
+        }
+      });
+
+      const z = indexes.map((e, i) => {
+        return state.slice(e, indexes[i + 1]);
+      });
+
+      return z;
+    };
+    res.render('pages/index', { data: data(), formatCurrency, formatDate });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
