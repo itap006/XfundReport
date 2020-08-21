@@ -10,6 +10,9 @@
     "start": "node server.js",
     "dev-start": "nodemon server.js -e js,css,ejs"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
