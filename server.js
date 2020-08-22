@@ -18,7 +18,7 @@ app.use(express.json());
 //   );
 // }
 
-app.use('/', require('./controllers/Base'));
+app.use('/basic', require('./controllers/Base'));
 
 app.use(express.static('public'));
 if (process.env.NODE_ENV === 'production') {

@@ -4,7 +4,7 @@ const { formatCurrency, formatDate } = require('../utils.js');
 
 const router = express.Router();
 
-router.get('/basic', async (req, res) => {
+router.get('/', async (req, res) => {
   // http://localhost:5000/basic?thisday=2020-06-30T00:00:00.000Z&schemeIds=1,2,3
   try {
     let { schemeIds, thisday } = req.query;
