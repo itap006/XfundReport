@@ -8,3 +8,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/basic?thisday=2020-06-30T00:00:00.000Z&schemeIds=2,12,10 HTTP/1.1
+
+###
+GET http://localhost:5000/carbon HTTP/1.1

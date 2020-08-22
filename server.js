@@ -1,7 +1,6 @@
 const express = require('express');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
-
 const app = express();
 app.set('view engine', 'ejs');
 
@@ -19,6 +18,7 @@ app.use(express.json());
 // }
 
 app.use('/basic', require('./controllers/Base'));
+app.use('/carbon', require('./controllers/Carbon'));
 
 app.use(express.static('public'));
 if (process.env.NODE_ENV === 'production') {
